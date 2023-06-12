@@ -17,13 +17,22 @@ To write a function that returns a promise, which is a special object in JavaScr
 
 By following these steps, you will have a function named "delay" that returns a promise. When you call this function with a specific number of seconds, it will create a promise that resolves after that many seconds have passed.
 */
-function delay(second) {
+function wait(n) {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve();
-    }, second * 1000);
+    }, n * 1000);
   });
 }
-delay(5).then(() => {
+wait(5).then(() => {
   console.log("promise resolved after 5 seconds");
 });
+
+// We try to write above code using callback!
+function delay(n) {
+  function callback() {
+    console.log("callback is called after 10 seconds");
+  }
+  setTimeout(callback, n);
+}
+delay(10000);
